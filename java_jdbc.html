@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(function(){
+            $("#header").load("/html5-boilerplate/header.html");
+            $("#left_nav").load("/html5-boilerplate/left_nav.html");
+        });
+    </script>
+
+</head>
+
+<body>
+
+<div id="header"></div>
+
+
+
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div id="left_nav"></div>
+
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
+
+            <h2 class="sub-header">JDBC Example </h2>
+
+            <a href="https://github.com/eivchenko/html5-boilerplate/blob/master/tile.png" class="btn btn-default btn-success btn-lg active"><span class="glyphicon glyphicon-save"></span> Download the Source Code</a>
+            <br/>
+
+
+
+                <style type="text/css">
+                    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+                </style>
+
+
+            <!-- ======================================================== -->
+            <!-- = Java Sourcecode to HTML automatically converted code = -->
+            <!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+            <!-- =     Further information: http://www.java2html.de     = -->
+            <div align="left" class="java">
+                <table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+                    <tr>
+                        <!-- start source code -->
+                        <td nowrap="nowrap" valign="top" align="left">
+                            <code>
+                                <font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">routers;</font><br />
+                                <font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.io.*;</font><br />
+                                <font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.net.*;</font><br />
+                                <font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.util.LinkedList;</font><br />
+                                <font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.util.Vector;</font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.script.ScriptEngine;</font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.script.ScriptEngineManager;</font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.script.ScriptException;</font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">routers.Algorithm.Link;</font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">Router_0&nbsp;</font><font color="#7f0055"><b>implements&nbsp;</b></font><font color="#000000">Runnable&nbsp;</font><font color="#000000">{&nbsp;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">Router_0</font><font color="#000000">(){}</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">port&nbsp;=&nbsp;</font><font color="#990000">1</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Socket&nbsp;requestSocket;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">ObjectOutputStream&nbsp;out;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">ObjectInputStream&nbsp;in;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">String&nbsp;message;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">Vector&lt;Link&gt;&nbsp;table&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Vector&lt;Link&gt;</font><font color="#000000">()</font><font color="#000000">;</font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">run</font><font color="#000000">(){</font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>try</b></font><font color="#000000">{</font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">(</font><font color="#2a00ff">&#34;\n&nbsp;Started&nbsp;router&nbsp;#&nbsp;0&nbsp;waiting&nbsp;for&nbsp;connection&nbsp;on&nbsp;port&nbsp;0&#34;&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">requestSocket&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Socket</font><font color="#000000">(</font><font color="#2a00ff">&#34;localhost&#34;</font><font color="#000000">,&nbsp;port</font><font color="#000000">)</font><font color="#000000">;&nbsp;</font><font color="#3f7f5f">//connect&nbsp;to&nbsp;Router&nbsp;1&nbsp;on&nbsp;port&nbsp;1</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">out&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">ObjectOutputStream</font><font color="#000000">(</font><font color="#000000">requestSocket.getOutputStream</font><font color="#000000">())</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">in&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">ObjectInputStream</font><font color="#000000">(</font><font color="#000000">requestSocket.getInputStream</font><font color="#000000">())</font><font color="#000000">;</font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">(</font><font color="#2a00ff">&#34;&nbsp;Connected&nbsp;to&nbsp;router&nbsp;#&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;port&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;on&nbsp;port&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;port&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;\n&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">BufferedReader&nbsp;br&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BufferedReader</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">InputStreamReader</font><font color="#000000">(</font><font color="#000000">System.in</font><font color="#000000">))</font><font color="#000000">;</font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">(</font><font color="#2a00ff">&#34;&nbsp;+++&nbsp;Starting&nbsp;the&nbsp;exchange&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">sendMessage</font><font color="#000000">(</font><font color="#000000">table</font><font color="#000000">)</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>catch</b></font><font color="#000000">(</font><font color="#000000">UnknownHostException&nbsp;unknownHost</font><font color="#000000">){</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.err.println</font><font color="#000000">(</font><font color="#2a00ff">&#34;You&nbsp;are&nbsp;trying&nbsp;to&nbsp;connect&nbsp;to&nbsp;an&nbsp;unknown&nbsp;host!&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>catch</b></font><font color="#000000">(</font><font color="#000000">Exception&nbsp;exception</font><font color="#000000">){</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">exception.printStackTrace</font><font color="#000000">()</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>finally</b></font><font color="#000000">{</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//4:&nbsp;Closing&nbsp;connection</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>try</b></font><font color="#000000">{</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">(&nbsp;</font><font color="#2a00ff">&#34;\n&nbsp;Disconnecting&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">in.close</font><font color="#000000">()</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">out.close</font><font color="#000000">()</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">requestSocket.close</font><font color="#000000">()</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>catch</b></font><font color="#000000">(</font><font color="#000000">IOException&nbsp;ioException</font><font color="#000000">){</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ioException.printStackTrace</font><font color="#000000">()</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">sendMessage</font><font color="#000000">(</font><font color="#000000">Object&nbsp;strRequest</font><font color="#000000">)&nbsp;{</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>try</b></font><font color="#000000">{</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">out.writeObject</font><font color="#000000">(</font><font color="#000000">strRequest</font><font color="#000000">)</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">out.flush</font><font color="#000000">()</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>catch</b></font><font color="#000000">(</font><font color="#000000">IOException&nbsp;ioException</font><font color="#000000">){</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ioException.printStackTrace</font><font color="#000000">()</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">main</font><font color="#000000">(</font><font color="#000000">String</font><font color="#000000">[]&nbsp;</font><font color="#000000">argv</font><font color="#000000">){</font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Vector&lt;Link&gt;&nbsp;table0&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Vector&lt;Link&gt;</font><font color="#000000">()</font><font color="#000000">;</font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//Router&nbsp;0&nbsp;table</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">table0.add</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Link</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">,&nbsp;</font><font color="#990000">1</font><font color="#000000">,&nbsp;</font><font color="#990000">1</font><font color="#000000">))</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">table0.add</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Link</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">,&nbsp;</font><font color="#990000">2</font><font color="#000000">,&nbsp;</font><font color="#990000">3</font><font color="#000000">))</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">table0.add</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Link</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">,&nbsp;</font><font color="#990000">3</font><font color="#000000">,&nbsp;</font><font color="#990000">7</font><font color="#000000">))</font><font color="#000000">;</font><br />
+                                <font color="#ffffff"></font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//Launching&nbsp;router&nbsp;0,&nbsp;all&nbsp;other&nbsp;router&nbsp;start&nbsp;from&nbsp;the&nbsp;Router.java&nbsp;main&nbsp;method</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Router_0&nbsp;server&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Router_0</font><font color="#000000">()</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">server.table&nbsp;=&nbsp;table0;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Thread&nbsp;conThread&nbsp;=&nbsp;&nbsp;</font><font color="#7f0055"><b>new&nbsp;&nbsp;</b></font><font color="#000000">Thread</font><font color="#000000">(</font><font color="#000000">server</font><font color="#000000">)</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">conThread.start</font><font color="#000000">()</font><font color="#000000">;</font><br />
+                                <font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+                                <font color="#000000">}</font></code>
+
+                        </td>
+                        <!-- end source code -->
+                    </tr>
+                </table>
+            </div>
+            <!-- =       END of automatically generated HTML code       = -->
+            <!-- ======================================================== -->
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<script src="../../assets/js/docs.min.js"></script>
+</body>
+</html>

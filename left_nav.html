@@ -1,0 +1,54 @@
+
+
+<script>
+
+
+
+    function getPageName(url) {
+        var index = url.lastIndexOf("/") + 1;
+        var filenameWithExtension = url.substr(index);
+        var filename = filenameWithExtension.split(".")[0]; // <-- added this line
+
+        return filename;                                    // <-- added this line
+    }
+
+
+
+
+
+    $(function(){
+
+
+        var pathname = $(location).attr('href');
+        var filename =  getPageName(pathname);
+        $('#' + filename).addClass('active');
+
+
+    });
+
+</script>
+
+
+
+<div class="col-sm-3 col-md-2 sidebar">
+    <ul class="nav nav-sidebar">
+        <li  id="index" class=""><a href="/html5-boilerplate/index.html">Home</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+
+        <li><a href="#">Java</a>
+        </li>
+    </ul>
+
+    <ul class="nav sub_nav-sidebar">
+
+        <li id="java_jdbc"  "><a href="/html5-boilerplate/java_jdbc.html"> JDBC Example</a></li>
+        <li><a href="/html5-boilerplate/java_jdbc.html"> ODBC Example</a></li>
+    </ul>
+
+    <ul class="nav nav-sidebar">
+        <li><a href="">Nav item again</a></li>
+        <li><a href="">One more nav</a></li>
+        <li><a href="">Another nav item</a></li>
+    </ul>
+</div>
