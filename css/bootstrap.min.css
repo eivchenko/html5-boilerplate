@@ -4094,14 +4094,27 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
         border-top: 0;
         -webkit-box-shadow: none;
         box-shadow: none
+    height: 500px;
     }
 
     .navbar-collapse.collapse {
         display: block !important;
         height: auto !important;
         padding-bottom: 100;
-        overflow: visible !important;
-       /* background-color: #428bca;*/
+        /*background-color: #428bca;*/
+
+        border-style: none;
+        color: #FFF;
+        text-align: center;
+      /*  background-color: #5fb0e4;*/
+        background-image: url('../img/triangles.jpg');
+        background-repeat: no-repeat;
+
+        text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+
     }
 
     .navbar-collapse.in {
@@ -4132,7 +4145,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 @media (min-width: 768px) {
     .container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse {
         margin-right: 0;
-        margin-left: 0
+        margin-left: -15px;
     }
 }
 
@@ -4154,7 +4167,8 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     z-index: 1030;
     -webkit-transform: translate3d(0, 0, 0);
     -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0)
+    transform: translate3d(0, 0, 0);
+
 }
 
 @media (min-width: 768px) {
@@ -4273,12 +4287,13 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     }
 
     .navbar-nav > li > a {
-        padding-top: 15px;
+        padding-top: 55px;
         padding-bottom: 15px
     }
 
     .navbar-nav.navbar-right:last-child {
-        margin-right: -15px
+        margin-top: 40px
+        margin-right: -10px
     }
 }
 
@@ -4293,6 +4308,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 }
 
 .navbar-form {
+
     padding: 10px 15px;
     margin-top: 8px;
     margin-right: -15px;
@@ -4522,7 +4538,9 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 }
 
 .navbar-inverse {
-    background-color: #222;
+    border-style: solid;
+  /*  background-image: url('../img/triangles.jpg');*/
+    background-color:#3152B9;
     border-color: #080808
 }
 
@@ -4540,7 +4558,9 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    color: #777
+    color: white;
+    font-size: 16px;
+    text-shadow: 0 1px 0 rgba(0,0,0,.15);
 }
 
 .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
