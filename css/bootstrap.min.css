@@ -4088,7 +4088,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     overflow-y: auto
 }
 
-@media (min-width: 768px) {
+@media (min-width: 71px) {
     .navbar-collapse {
         width: auto;
         border-top: 0;
@@ -4099,8 +4099,9 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     .navbar-collapse.collapse {
         display: block !important;
         height: auto !important;
-        padding-bottom: 0;
-        overflow: visible !important
+        padding-bottom: 100;
+        overflow: visible !important;
+       /* background-color: #428bca;*/
     }
 
     .navbar-collapse.in {
@@ -4175,10 +4176,11 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 
 .navbar-brand {
     float: left;
-    height: 50px;
+    height: 60px;
     padding: 15px 15px;
-    font-size: 18px;
-    line-height: 20px
+    font-size: 28px;
+    line-height: 20px;
+/*background-color: #428bca*/;
 }
 
 .navbar-brand:hover, .navbar-brand:focus {

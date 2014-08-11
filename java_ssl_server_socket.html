@@ -63,10 +63,10 @@
 
 
 
-            <h2 class="sub-header">JDBC Example </h2>
+            <h2 class="sub-header">Creating an SSL Server Socket </h2>
 
             <div style="margin-top:1cm;"> </div>
-            <a href="download_files/JdbcConnection.zip" class="btn btn-default btn-success btn-lg active"><span class="glyphicon glyphicon-save"></span> Download the Source Code</a>
+            <a href="download_files/CreatingServerSocket.zip" class="btn btn-default btn-success btn-lg active"><span class="glyphicon glyphicon-save"></span> Download the Source Code</a>
            <div style="margin-top:2cm;"> </div>
 
 
@@ -74,44 +74,36 @@
                 <style type="text/css">
                     <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
                 </style>
-
-
 <pre><code class="java" >
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
 
-public class JdbcConnection {
-  static Connection conn;
+import javax.net.ServerSocketFactory;
+import javax.net.ssl.SSLServerSocketFactory;
 
-  public static void main(String[] args) {
-    String driver = "com.mysql.jdbc.Driver";
-    String connectionURL = "jdbc:mysql://127.0.0.1:3306/sample";
+public class CreatingServerSocket {
 
-    try {
-        Class.forName(driver);
-    } catch (java.lang.ClassNotFoundException e) {
-        e.printStackTrace();
-    }
+  public static void main(String[] argv) throws Exception {
 
-    try {
-        conn = DriverManager.getConnection(connectionURL);
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM NONEXISTINGTABLE");
-        rs.next();
-        rs.close();
-    } catch (SQLException sx) {
-        for (Throwable e : sx) {
-            System.err.println("Error encountered: " + e);
-        }
-    }
-   }
+    int port = 443;
+    ServerSocketFactory ssocketFactory = SSLServerSocketFactory.getDefault();
+    ServerSocket ssocket = ssocketFactory.createServerSocket(port);
+
+    Socket socket = ssocket.accept();
+
+    InputStream in = socket.getInputStream();
+    OutputStream out = socket.getOutputStream();
+
+    // Read from in and write to out...
+
+    in.close();
+    out.close();
+  }
 }
-
-</code></pre>
+ </code></pre>
 
         </div>
     </div>

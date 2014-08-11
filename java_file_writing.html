@@ -8,7 +8,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -63,10 +62,10 @@
 
 
 
-            <h2 class="sub-header">JDBC Example </h2>
+            <h2 class="sub-header">Writing Into a File Example</h2>
 
             <div style="margin-top:1cm;"> </div>
-            <a href="download_files/JdbcConnection.zip" class="btn btn-default btn-success btn-lg active"><span class="glyphicon glyphicon-save"></span> Download the Source Code</a>
+            <a href="download_files/FileWriting.zip" class="btn btn-default btn-success btn-lg active"><span class="glyphicon glyphicon-save"></span> Download the Source Code</a>
            <div style="margin-top:2cm;"> </div>
 
 
@@ -76,43 +75,43 @@
                 </style>
 
 
+
 <pre><code class="java" >
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
-public class JdbcConnection {
-  static Connection conn;
+public class FileWriting {
 
   public static void main(String[] args) {
-    String driver = "com.mysql.jdbc.Driver";
-    String connectionURL = "jdbc:mysql://127.0.0.1:3306/sample";
 
-    try {
-        Class.forName(driver);
-    } catch (java.lang.ClassNotFoundException e) {
-        e.printStackTrace();
-    }
+    try (BufferedReader inputReader = Files.newBufferedReader(
+        Paths.get(new URI("file:///C:/users.txt")),
+        Charset.defaultCharset());
 
-    try {
-        conn = DriverManager.getConnection(connectionURL);
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM NONEXISTINGTABLE");
-        rs.next();
-        rs.close();
-    } catch (SQLException sx) {
-        for (Throwable e : sx) {
-            System.err.println("Error encountered: " + e);
+        BufferedWriter outputWriter = Files.newBufferedWriter(
+            Paths.get(new URI("file:///C:/users.bak")),
+            Charset.defaultCharset())) {
+
+        String inputLine;
+        while ((inputLine = inputReader.readLine()) != null) {
+          outputWriter.write(inputLine);
+          outputWriter.newLine();
         }
+        System.out.println("Copy complete!");
+    } catch (URISyntaxException | IOException ex) {
+        ex.printStackTrace();
     }
-   }
+
+  }
 }
-
 </code></pre>
-
         </div>
     </div>
 </div>
