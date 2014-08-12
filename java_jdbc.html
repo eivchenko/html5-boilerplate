@@ -4,15 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+
 
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 
-    <title>Code Example Portal</title>
+    <title>Java JDBC Examples</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -40,7 +38,32 @@
 
 <body>
 
-<div id="header"></div>
+<!--REMOVED DUE TO SEARCH ENGINE OPTIMIZATION<div id="header"></div>-->
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+            <div class="bs-header22" >
+
+                <div class="bs-header" >
+                    <h1>Code Example Portal</h1>
+                    View and download wide range of code examples by various open source programming languages</div>
+            </div>
+
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact_us.html">Contact Us</a></li>
+            </ul>
+            <!--   <form class="navbar-form navbar-right">
+                   <input type="text" class="form-control" placeholder="Search...">
+               </form>-->
+        </div>
+    </div>
+</div>
 
 
 
@@ -49,7 +72,49 @@
 
     <div class="row">
 
-        <div id="left_nav"></div>
+        <!--<div id="left_nav"></div>-->
+        <script>
+            function getPageName(url) {
+                var index = url.lastIndexOf("/") + 1;
+                var filenameWithExtension = url.substr(index);
+                var filename = filenameWithExtension.split(".")[0]; // <-- added this line
+                return filename;                                    // <-- added this line
+            }
+
+            $(function(){
+
+                var pathname = $(location).attr('href');
+                var filename =  getPageName(pathname);
+                $('#' + filename).addClass('active');
+            });
+        </script>
+
+
+
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li  id="index" class=""><a href="index.html">Home</a></li>
+            </ul>
+            <ul class="nav nav-sidebar2">
+                <li><a href="#">Java</a></li>
+            </ul>
+
+            <ul class="nav sub_nav-sidebar">
+                <li id="java_jdbc" ><a href="java_jdbc.html"> JDBC Example</a></li>
+                <li id="java_file_writing" ><a href="java_file_writing.html"> File Writing Example</a></li>
+                <li id="java_ssl_server_socket" ><a href="java_ssl_server_socket.html"> Server Socket Example</a></li>
+            </ul>
+
+            <ul class="nav nav-sidebar2">
+                <li><a href="#">Python</a></li>
+            </ul>
+
+            <ul class="nav sub_nav-sidebar">
+                <li id="python_connect"  ><a href="python_connect.html"> Connect Example</a></li>
+                <li id="python_file_writing"><a href="python_file_writing.html"> File Writing Example</a></li>
+            </ul>
+        </div>
+
 
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
