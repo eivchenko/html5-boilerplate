@@ -27,10 +27,25 @@
     <![endif]-->
 
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script>
+<!--    <script>
         $(function(){
             $("#header").load("header.html");
             $("#left_nav").load("left_nav.html");
+        });
+    </script>-->
+    <script>
+        function getPageName(url) {
+            var index = url.lastIndexOf("/") + 1;
+            var filenameWithExtension = url.substr(index);
+            var filename = filenameWithExtension.split(".")[0]; // <-- added this line
+            return filename;                                    // <-- added this line
+        }
+
+        $(function(){
+
+            var pathname = $(location).attr('href');
+            var filename =  getPageName(pathname);
+            $('#' + filename).addClass('active');
         });
     </script>
 
@@ -73,21 +88,7 @@
     <div class="row">
 
         <!--<div id="left_nav"></div>-->
-        <script>
-            function getPageName(url) {
-                var index = url.lastIndexOf("/") + 1;
-                var filenameWithExtension = url.substr(index);
-                var filename = filenameWithExtension.split(".")[0]; // <-- added this line
-                return filename;                                    // <-- added this line
-            }
 
-            $(function(){
-
-                var pathname = $(location).attr('href');
-                var filename =  getPageName(pathname);
-                $('#' + filename).addClass('active');
-            });
-        </script>
 
 
 

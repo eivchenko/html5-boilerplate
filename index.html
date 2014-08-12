@@ -21,30 +21,28 @@
     <![endif]-->
 
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script>
-
-
+<!--    <script>
         $(function(){
             $("#header").load("header.html");
             $("#left_nav").load("left_nav.html");
         });
+    </script>-->
 
-        /*
+
+    <script>
+        function getPageName(url) {
+            var index = url.lastIndexOf("/") + 1;
+            var filenameWithExtension = url.substr(index);
+            var filename = filenameWithExtension.split(".")[0]; // <-- added this line
+            return filename;                                    // <-- added this line
+        }
+
         $(function(){
 
-
-           var pathname = window.location.pathname;
-           var filename =  getPageName(pathname);
-
-            $('#index').toggleClass('active');
-
-            $('#index').addClass('active');
-
-            document.getElementById("#index").className = "active";
-
-
-        });*/
-
+            var pathname = $(location).attr('href');
+            var filename =  getPageName(pathname);
+            $('#' + filename).addClass('active');
+        });
     </script>
 
 </head>
@@ -83,7 +81,34 @@
 
     <div class="row">
 
-        <div id="left_nav"></div>
+        <!--REMOVED DUE TO SEARCH ENGINE OPTIMIZATION <div id="left_nav"></div>-->
+
+
+
+
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li  id="index" class=""><a href="index.html">Home</a></li>
+            </ul>
+            <ul class="nav nav-sidebar2">
+                <li><a href="#">Java</a></li>
+            </ul>
+
+            <ul class="nav sub_nav-sidebar">
+                <li id="java_jdbc" ><a href="java_jdbc.html"> JDBC Example</a></li>
+                <li id="java_file_writing" ><a href="java_file_writing.html"> File Writing Example</a></li>
+                <li id="java_ssl_server_socket" ><a href="java_ssl_server_socket.html"> Server Socket Example</a></li>
+            </ul>
+
+            <ul class="nav nav-sidebar2">
+                <li><a href="#">Python</a></li>
+            </ul>
+
+            <ul class="nav sub_nav-sidebar">
+                <li id="python_connect"  ><a href="python_connect.html"> Connect Example</a></li>
+                <li id="python_file_writing"><a href="python_file_writing.html"> File Writing Example</a></li>
+            </ul>
+        </div>
 
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
